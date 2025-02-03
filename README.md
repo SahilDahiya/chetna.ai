@@ -1,2 +1,2 @@
-# soch.ai
+# chetna.ai
 Sharpens Your Thinking!
