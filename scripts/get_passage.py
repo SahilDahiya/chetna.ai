@@ -22,7 +22,8 @@ passages = db[database_name][collection_name]
 def get_response(messages):
     return client.chat.completions.create(
         messages=messages,
-        model='gpt-4o-mini',
+        model='gpt-4o',
+        max_tokens=256
     )
     
 
@@ -36,6 +37,10 @@ def chat() -> None:
             {
                 'role': 'developer',
                 'content': SYSTEM_PROMPT.format(passage=passage),
+            },
+            {
+                'role': 'assistant',
+                'content': "Use only the information provided in the passage.\n{passage}",
             },
             {
                 'role': 'user',
