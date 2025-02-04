@@ -1,0 +1,50 @@
+[project]
+name = "chetna-ai"
+version = "0.0.1"
+description = "AI-powered learning assistant"
+requires-python = ">=3.11, <3.14"
+dependencies = [
+    "pydantic==2.9.2",
+    "typing_extensions==4.12.2",
+    "pydantic-settings==2.7.1",
+    "unstructured-client==0.28.1",
+    "pymongo>=4.11",
+    "rich>=13.9.4",
+    "click>=8.1.8",
+    "openai>=1.61.0",
+    "python-dotenv>=1.0.1",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest==8.3.4",
+    "pytest-asyncio==0.25.2",
+    "ruff==0.9.0",
+    "faker==33.3.1",
+    "pytest-mock==3.14.0",
+]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+extend-select = ["E501", "I"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+force-wrap-aliases = true
+
+[tool.ruff.format]
+# 5. Use single quotes in `ruff format`.
+quote-style = "single"
+docstring-code-format = true
+
+[tool.pytest.ini_options]
+pythonpath = [
+    "src",
+    "tests"
+]
+asyncio_mode = 'auto'
