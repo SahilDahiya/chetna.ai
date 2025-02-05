@@ -4,9 +4,22 @@ import click
 from dotenv import load_dotenv
 from openai import OpenAI
 from pymongo import MongoClient
+from rich.console import Console
+from rich.panel import Panel
+from rich.style import Style
 from system_prompt import SYSTEM_PROMPT
 
 load_dotenv()
+
+# Create styled consoles
+console = Console()
+console_bot = Console(style="bold cyan")
+console_user = Console(style="bold green")
+
+# Custom styles
+passage_style = Style(color="magenta")
+question_style = Style(color="green", italic=True)
+bot_style = Style(color="cyan")
 
 client = OpenAI(
     api_key=os.environ.get('OPENAI_API_KEY'),
@@ -29,10 +42,11 @@ def get_response(messages):
 
 click.command()
 def chat() -> None:
-    passage = passages.find_one()['text_english']
-    print("passage: ", passage)
-    print("Ask me anything about passage!")
-    question = input("Question: ")
+    passage = passages.find_one({'book_name': 'joyous_wisdom'})['text_english']
+    console.print(Panel(passage, title="Passage", style=passage_style))
+    
+    console_bot.print("[bold yellow]Ask me anything about passage![/bold yellow]")
+    question = console_user.input("[bold green]Question: [/bold green]")
     messages=[
             {
                 'role': 'developer',
@@ -52,8 +66,8 @@ def chat() -> None:
     while question != "stop!":
         response = get_response(messages)
         ai = response.choices[0].message.content
-        print(ai)
-        question = input("Question: ")
+        console_bot.print(Panel(ai, style=bot_style))
+        question = console_user.input("[bold green]Question: [/bold green]")
         messages.extend([
             {
                 'role': 'assistant',
