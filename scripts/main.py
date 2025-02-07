@@ -13,6 +13,7 @@ from system_prompt import SYSTEM_PROMPT
 
 load_dotenv()
 
+
 # Create styled consoles
 console = Console()
 console_bot = Console(style='bold cyan')
@@ -107,7 +108,7 @@ def chat() -> None:
 
     if len(discussion['messages']) > 2:
         save_discussion(discussion)
-        print("saved!")
+        print('saved!')
 
 
 if __name__ == '__main__':
