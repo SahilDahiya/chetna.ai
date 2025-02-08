@@ -1,1 +1,1 @@
-from .get_passage import app as add_get_passage_app
+from .get_passage import app as add_passage_query_app

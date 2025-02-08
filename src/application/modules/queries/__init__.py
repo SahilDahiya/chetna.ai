@@ -1,1 +1,1 @@
-from .passage_query import get_passage
+from .passage_query import passage_query

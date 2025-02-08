@@ -1,13 +1,13 @@
 import typer
 
-from src.cli.commands import add_get_passage_app
-from src.infrastructure.container import Container
+from src.cli.commands import add_passage_query_app
+from src.infrastructure.containers import Container
 
 app = typer.Typer()
 container = Container()
 container.wire(packages=["src.application"])
 
-app.add_typer(add_get_passage_app)
+app.add_typer(add_passage_query_app)
 
 @app.callback()
 def main(verbose: bool = False):

@@ -1,10 +1,11 @@
 from dependency_injector.wiring import Provide, inject
+
 from src.domain.interfaces import AbstractPassageRepository
-from src.infrastructure.container import Container
+from src.infrastructure.containers import Container
 
 
 @inject
-def get_passage(
+def passage_query(
     book_name: str,
     chapter_no: str,
     passage_no: str,
