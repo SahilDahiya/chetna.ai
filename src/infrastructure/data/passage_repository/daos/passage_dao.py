@@ -25,5 +25,5 @@ def passage_dao_to_passage(passage_dao: PassageDAO) -> Passage:
         chapter_no=passage_dao['chapter_no'],
         passage_no=passage_dao['passage_no'],
         text_english=passage_dao['text_english'],
-        text_german=passage_dao['text_german']
+        text_german=passage_dao['text_german'],
     )

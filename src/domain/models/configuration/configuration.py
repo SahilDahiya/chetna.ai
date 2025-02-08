@@ -2,7 +2,6 @@ from pydantic_settings import BaseSettings
 
 
 class Configuration(BaseSettings):
-
     openai_api_key: str
     model_name: str
     max_tokens: int
