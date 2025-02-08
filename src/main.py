@@ -5,7 +5,7 @@ from src.infrastructure.container import Container
 
 app = typer.Typer()
 container = Container()
-container.wire(packages=["src.cli.commands"])
+container.wire(packages=["src.application"])
 
 app.add_typer(add_get_passage_app)
 
