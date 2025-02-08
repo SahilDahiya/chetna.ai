@@ -1,2 +1,1 @@
-from .abstract_service_provider import AbstractServiceProvider
 from .abstract_passage_repository import AbstractPassageRepository
