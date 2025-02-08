@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 
-from ....domain.models.configuration import Configuration
+from src.domain.models.configuration import Configuration
 
 
 def mongodb_client(configuration: Configuration) -> None:

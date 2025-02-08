@@ -2,7 +2,7 @@ from uuid import UUID
 
 from typing_extensions import TypedDict
 
-from .....domain.models.passages import Passage
+from src.domain.models.passages import Passage
 
 
 class PassageDAO(TypedDict):

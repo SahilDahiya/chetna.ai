@@ -1,8 +1,9 @@
 from pymongo import MongoClient
 
-from ....domain.interfaces import AbstractPassageRepository
-from ....domain.models.configuration import Configuration
-from ....domain.models.passages import Passage
+from src.domain.interfaces import AbstractPassageRepository
+from src.domain.models.configuration import Configuration
+from src.domain.models.passages import Passage
+
 from .daos.passage_dao import PassageDAO, passage_dao_to_passage
 
 

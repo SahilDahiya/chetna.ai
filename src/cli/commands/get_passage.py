@@ -1,21 +1,28 @@
 import typer
+from dependency_injector.wiring import Provide, inject
 from rich import print
 
-from ...domain.models.configuration import Configuration
-from ...infrastructure.data import mongodb_client
-from ...infrastructure.data.passage_repository import PassageRepository
+from src.domain.interfaces import AbstractPassageRepository
+from src.infrastructure.container import Container
 
 app = typer.Typer()
 
 
+
+@inject
+def get_passage(
+    book_name: str,
+    chapter: str = typer.Argument("chapter_1"),
+    verse: str = typer.Argument("19"),
+    passage_repository: AbstractPassageRepository = Provide[Container.passage_repository]
+):
+    return(passage_repository.get_passage(book_name, 'chapter_1', '19'))
+    
+    
 @app.command()
-def get_passage(book_name: str):
-
-    
-    config = Configuration(_env_file=".env", _env_file_encoding="utf-8")
-    
-    db_client = mongodb_client(configuration=config)
-    
-
-    passage_repository = PassageRepository(db_client, config)
-    print(passage_repository.get_passage(book_name, 'chapter_1', '19'))
+def passage(
+    book_name: str,
+    chapter: str = typer.Argument("chapter_1"),
+    verse: str = typer.Argument("19"),
+):
+    print(get_passage(book_name, chapter, verse))
