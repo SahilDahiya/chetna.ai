@@ -1,7 +1,7 @@
 import typer
 from rich import print
 
-from src.application.modules.queries import passage_query
+from src.application.modules.passages.queries import passage_query
 
 app = typer.Typer()
     

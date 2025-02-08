@@ -6,7 +6,7 @@
             "type": "debugpy",
             "request": "launch",
             "module": "src.main",
-            "args": ["get-passage", "joyous_wisdom"]
+            "args": ["discuss", "what is the best country in the world?"]
         }
     ]
 }
