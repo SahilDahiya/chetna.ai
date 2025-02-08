@@ -16,7 +16,7 @@ def get_passage(
     verse: str = typer.Argument("19"),
     passage_repository: AbstractPassageRepository = Provide[Container.passage_repository]
 ):
-    return(passage_repository.get_passage(book_name, 'chapter_1', '19'))
+    return passage_repository.get_passage(book_name, 'chapter_1', '19')
     
     
 @app.command()
