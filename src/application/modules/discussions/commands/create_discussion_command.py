@@ -10,9 +10,11 @@ from src.infrastructure.recommendation import PassageRecommendationService
 @inject
 class DiscussCommand:
     def __init__(
-        self, 
+        self,
         llm_completion_service: AbstractLlmCompletionService = Provide[Container.llm_compeletion_service],
-        passage_recommendation_service: PassageRecommendationService = Provide[Container.passage_recommendation_service]
+        passage_recommendation_service: PassageRecommendationService = Provide[
+            Container.passage_recommendation_service
+        ],
     ):
         self.passage = None
         self.messages = None
@@ -31,22 +33,13 @@ class DiscussCommand:
                 'content': f'Only answer from this passage: {self.passage.text_english}',
             },
         ]
-        
 
     def get_next_passage(self, book_name: str | None = 'joyous_wisdom') -> Passage:
         return self.passage_recommendation_service.recommend(book_name=book_name)
 
     def ask(self, query) -> str:
-        self.messages.append({
-            'role': 'user',
-            'content': query
-        })
+        self.messages.append({'role': 'user', 'content': query})
         response = self.llm_completion_service.complete(messages=self.messages)
-        self.messages.append({
-            'role': 'assistant',
-            'content': response
-        })
+        self.messages.append({'role': 'assistant', 'content': response})
 
         return response
-
-

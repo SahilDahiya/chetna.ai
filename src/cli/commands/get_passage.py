@@ -7,9 +7,5 @@ app = typer.Typer()
 
 
 @app.command()
-def get_passage(
-    book_name: str,
-    chapter: str = typer.Argument('chapter_1'),
-    verse: str = typer.Argument('19'),
-):
+def get_passage(book_name: str):
     print(passage_query(book_name))

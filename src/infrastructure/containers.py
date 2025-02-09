@@ -20,7 +20,4 @@ class Container(containers.DeclarativeContainer):
         LlmCompletionService, openai_client=openai_client, configuration=config
     )
 
-    passage_recommendation_service = providers.Singleton(
-        PassageRecommendationService,
-        passage_repository
-    )
+    passage_recommendation_service = providers.Singleton(PassageRecommendationService, passage_repository)

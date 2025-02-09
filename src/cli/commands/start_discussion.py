@@ -1,7 +1,5 @@
-from uuid import UUID
-
 import typer
-from rich import console, print
+from rich import print
 
 from src.application.modules.discussions.commands import DiscussCommand
 
@@ -13,15 +11,14 @@ def start_discussion():
     discuss = DiscussCommand()
     discuss.create_discussion()
     print(discuss.passage.text_english)
-    print("Ask me anything!")
+    print('Ask me anything!')
 
     while True:
-        query = typer.prompt("Your resposnse")
+        query = typer.prompt('Your resposnse')
 
-        if query.lower() == "exit":
-            print("[bold red]Goodbye![/bold red]")
+        if query.lower() == 'exit':
+            print('[bold red]Goodbye![/bold red]')
             break
 
         content = discuss.ask(query)
         print(content)
-

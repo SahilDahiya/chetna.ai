@@ -12,7 +12,7 @@ app.add_typer(start_discussion_app)
 
 
 @app.callback()
-def main(verbose: bool = False):
+def main():
     """
     Think better in the awesome CLI app.
     """
