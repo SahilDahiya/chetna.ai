@@ -1,1 +1,1 @@
-from .create_discussion_command import CreateDiscussionCommand
+from .create_discussion_command import DiscussCommand

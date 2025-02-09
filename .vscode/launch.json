@@ -6,7 +6,7 @@
             "type": "debugpy",
             "request": "launch",
             "module": "src.main",
-            "args": ["discuss", "what is the best country in the world?"]
+            "args": ["start-discussion"]
         }
     ]
 }

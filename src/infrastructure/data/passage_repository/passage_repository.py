@@ -20,6 +20,6 @@ class PassageRepository(AbstractPassageRepository):
         return passage_dao_to_passage(passage)
 
     def get_book_chapter_passages(self, book_name: str, chapter_no: str) -> list[Passage]:
-        passages: list[PassageDAO] = self.__collection.find({'book_name': book_name, 'chapter_no': chapter_no})
+        passages: list[PassageDAO] = list(self.__collection.find({'book_name': book_name, 'chapter_no': chapter_no}))
 
         return [passage_dao_to_passage(passage) for passage in passages]

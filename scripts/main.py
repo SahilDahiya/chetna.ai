@@ -9,7 +9,7 @@ from pymongo import MongoClient
 from rich.console import Console
 from rich.panel import Panel
 from rich.style import Style
-from system_prompt import SYSTEM_PROMPT
+from domain.prompts.system_prompt import SYSTEM_PROMPT
 
 load_dotenv()
 

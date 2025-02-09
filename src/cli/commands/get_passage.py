@@ -12,4 +12,4 @@ def get_passage(
     chapter: str = typer.Argument('chapter_1'),
     verse: str = typer.Argument('19'),
 ):
-    print(passage_query(book_name, chapter, verse))
+    print(passage_query(book_name))

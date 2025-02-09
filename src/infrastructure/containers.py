@@ -2,8 +2,9 @@ from dependency_injector import containers, providers
 
 from src.domain.models.configuration import Configuration
 
-from .data import add_mongodb_client, PassageRepository
+from .data import PassageRepository, add_mongodb_client
 from .llm import LlmCompletionService, add_openai_client
+from .recommendation import PassageRecommendationService
 
 
 class Container(containers.DeclarativeContainer):
@@ -17,4 +18,9 @@ class Container(containers.DeclarativeContainer):
 
     llm_compeletion_service = providers.Singleton(
         LlmCompletionService, openai_client=openai_client, configuration=config
+    )
+
+    passage_recommendation_service = providers.Singleton(
+        PassageRecommendationService,
+        passage_repository
     )
