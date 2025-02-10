@@ -1,3 +1,5 @@
+from uuid import UUID
+
 from pymongo import MongoClient
 
 from src.domain.interfaces import AbstractPassageRepository
@@ -23,3 +25,7 @@ class PassageRepository(AbstractPassageRepository):
         passages: list[PassageDAO] = list(self.__collection.find({'book_name': book_name, 'chapter_no': chapter_no}))
 
         return [passage_dao_to_passage(passage) for passage in passages]
+
+    def get_passage_by_id(self, passage_id: UUID) -> Passage:
+        passage: PassageDAO = self.__collection.find_one({'uuid': passage_id})
+        return passage_dao_to_passage(passage)

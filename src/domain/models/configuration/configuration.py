@@ -9,3 +9,4 @@ class Configuration(BaseSettings):
     mongodb_connection_string: str
     database_name: str
     passage_collection_name: str
+    discussion_collection_name: str
