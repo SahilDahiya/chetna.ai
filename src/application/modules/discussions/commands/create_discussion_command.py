@@ -1,9 +1,10 @@
+import datetime
 from uuid import UUID
 
 from dependency_injector.wiring import Provide, inject
 
 from src.domain.interfaces import AbstractDiscussionRepository, AbstractLlmCompletionService
-from src.domain.models.discussion import Discussion
+from src.domain.models.discussion import Discussion, DiscussionMessage
 from src.domain.models.passages import Passage
 from src.domain.prompts import SYSTEM_PROMPT
 from src.infrastructure.containers import Container
@@ -28,27 +29,43 @@ class DiscussCommand:
 
     def create_discussion(self, user_id: UUID) -> None:
         self.passage = self.get_next_passage()
-        messages = [
-            {
-                'role': 'developer',
-                'content': SYSTEM_PROMPT,
-            },
-            {
-                'role': 'assistant',
-                'content': f'Only answer from this passage: {self.passage.text_english}',
-            },
-        ]
         self.discussion = self.__discussion_repository.get(user_id, self.passage.id)
         # TODO: summarize already existing discussion
         if not self.discussion:
-            self.discussion = Discussion(user_id=user_id, passage_id=self.passage.id, messages=messages)
+            messages = [
+                DiscussionMessage(
+                    role='developer',
+                    content=SYSTEM_PROMPT,
+                ),
+                DiscussionMessage(
+                    role='assistant',
+                    content=f'Only answer from this passage: {self.passage.text_english}',
+                ),
+            ]
+            self.discussion = Discussion(
+                user_id=user_id,
+                created_at=datetime.datetime.now(),
+                updated_at=datetime.datetime.now(),
+                passage_id=self.passage.id,
+                messages=messages,
+            )
 
     def get_next_passage(self, book_name: str | None = 'joyous_wisdom') -> Passage:
         return self.__passage_recommendation_service.recommend(book_name=book_name)
 
     def ask(self, query) -> str:
-        self.discussion.messages.append({'role': 'user', 'content': query})
+        self.discussion.messages.append(
+            DiscussionMessage(
+                role='user',
+                content=query,
+            )
+        )
         response = self.__llm_completion_service.complete(messages=self.discussion.messages)
-        self.discussion.messages.append({'role': 'assistant', 'content': response})
+        self.discussion.messages.append(
+            DiscussionMessage(
+                role='assistant',
+                content=response,
+            )
+        )
         self.__discussion_repository.save(self.discussion)
         return response

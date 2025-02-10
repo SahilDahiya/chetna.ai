@@ -1,3 +1,4 @@
+import datetime
 from uuid import UUID
 
 from pymongo import MongoClient
@@ -21,7 +22,9 @@ class DiscussionRepository(AbstractDiscussionRepository):
         return discussion_dao_to_discussion(discussion)
 
     def save(self, discussion: Discussion) -> None:
+        discussion.updated_at = datetime.datetime.now()
         discussion_dao = discussion_to_discussion_dao(discussion)
+
         self.__collection.update_one(
             {'user_id': discussion.user_id, 'passage_id': discussion.passage_id}, {'$set': discussion_dao}, upsert=True
         )
