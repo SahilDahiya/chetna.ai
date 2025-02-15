@@ -10,6 +10,6 @@ class LlmCompletionService(AbstractLlmCompletionService):
 
     def complete(self, messages):
         response = self.__openai_client.chat.completions.create(
-            messages=messages, model=self.__configuration.model_name, max_tokens=self.__configuration.max_tokens
+            messages=messages, model=self.__configuration.openai_model_name, max_tokens=self.__configuration.openai_max_tokens
         )
         return response.choices[0].message.content

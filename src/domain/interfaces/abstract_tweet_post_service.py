@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from domain.models.passages import Passage
+from src.domain.models.passages import Passage
 
 
 class AbstractTweetPostService(ABC):

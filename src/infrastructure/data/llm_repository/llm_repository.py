@@ -1,15 +1,9 @@
-from enum import Enum
-
-from domain.interfaces import AbstractLlmRepository
-from domain.models.configuration import Configuration
-
-from openai import Client as OpenAiClient
 from anthropic import Client as AnthropiClient
+from openai import Client as OpenAiClient
 
-
-class LlmType(Enum):
-    OPENAI = 'openai'
-    ANTHROPIC = 'anthropic'
+from src.domain.interfaces import AbstractLlmRepository
+from src.domain.models.configuration import Configuration
+from src.domain.models.llm import LlmType
 
 
 class LlmRepository(AbstractLlmRepository):
@@ -18,7 +12,7 @@ class LlmRepository(AbstractLlmRepository):
         self.__anthropic_client = anthropic_client
         self.__configuration = configuration
 
-    def get_llm_client(self, llm_type: LlmType) -> OpenAiClient | AnthropiClient:
+    def llm(self, llm_type: LlmType):
         if llm_type == LlmType.OPENAI:
             return self.__openai_client
         if llm_type == LlmType.ANTHROPIC:

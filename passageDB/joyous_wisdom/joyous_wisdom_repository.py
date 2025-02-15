@@ -1,6 +1,6 @@
 from typing import Literal
 
-from pydantic import BaseModel, validator
+from pydantic import BaseModel, field_validator
 
 
 class JoyousWisdomPassage(BaseModel):
@@ -14,7 +14,7 @@ class JoyousWisdomPassage(BaseModel):
     def model_post_init(self, __context) -> None:
         self.passage_id = f'{self.book_name.lower().replace(" ", "_")}#{self.chapter_name.lower().replace(" ", "_")}#{self.passage_no}'  # noqa: E501
 
-    @validator('passage_no')
+    @field_validator('passage_no')
     def validate_passages(cls, v, values):
         ranges = {'BOOK FIRST': (1, 58), 'BOOK SECOND': (58, 108), 'BOOK THIRD': (108, 276), 'BOOK FIFTH': (276, 384)}
 
@@ -38,8 +38,8 @@ class JoyousWisdomRepository:
         self.db = mongodb_client[db_name]
         self.collection = self.db['Books']
 
-    def save(self, passage: JoyousWisdomPassage):
-        self.collection.insert_one(passage.dict())
+    def save(self, jw_passage: JoyousWisdomPassage):
+        self.collection.insert_one(jw_passage.model_dump())
 
 
 if __name__ == '__main__':

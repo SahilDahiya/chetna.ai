@@ -15,7 +15,7 @@ class DiscussionRepository(AbstractDiscussionRepository):
         database = mongodb_client[configuration.database_name]
         self.__collection = database[configuration.discussion_collection_name]
 
-    def get(self, passage_id: UUID, user_id: UUID) -> Discussion | None:
+    def get(self, passage_id: str, user_id: UUID) -> Discussion | None:
         discussion: DiscussionDAO = self.__collection.find_one({'user_id': user_id, 'passage_id': passage_id})
         if not discussion:
             return None

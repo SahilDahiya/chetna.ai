@@ -1,7 +1,9 @@
-from abc import abstractmethod, ABC
+from abc import ABC, abstractmethod
+
+from src.domain.models.llm import LlmType
 
 
 class AbstractLlmRepository(ABC):
     @abstractmethod
-    def get_llm_client(self, llm_id: str) -> Llm:
+    def llm(self, llm_type: LlmType):
         pass

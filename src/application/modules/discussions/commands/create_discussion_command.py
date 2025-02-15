@@ -29,7 +29,7 @@ class DiscussCommand:
 
     def create_discussion(self, user_id: UUID) -> None:
         self.passage = self.get_next_passage()
-        self.discussion = self.__discussion_repository.get(user_id, self.passage.id)
+        self.discussion = self.__discussion_repository.get(user_id, self.passage.passage_id)
         # TODO: summarize already existing discussion
         if not self.discussion:
             messages = [
@@ -39,18 +39,18 @@ class DiscussCommand:
                 ),
                 DiscussionMessage(
                     role='assistant',
-                    content=f'Only answer from this passage: {self.passage.text_english}',
+                    content=f'Only answer from this passage: {self.passage.text}',
                 ),
             ]
             self.discussion = Discussion(
                 user_id=user_id,
                 created_at=datetime.datetime.now(),
                 updated_at=datetime.datetime.now(),
-                passage_id=self.passage.id,
+                passage_id=self.passage.passage_id,
                 messages=messages,
             )
 
-    def get_next_passage(self, book_name: str | None = 'joyous_wisdom') -> Passage:
+    def get_next_passage(self, book_name: str | None = 'The Joyous Wisdom') -> Passage:
         return self.__passage_recommendation_service.recommend(book_name=book_name)
 
     def ask(self, query) -> str:

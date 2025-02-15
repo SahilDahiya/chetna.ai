@@ -9,10 +9,10 @@ class PassageRecommendationService(AbstractPassageRecommendationService):
         self.__passage_repository = passage_repository
 
     def recommend(self, book_name: str) -> Passage:
-        chapter_no = 'chapter_1'
-        passages = self.__passage_repository.get_book_chapter_passages(book_name, chapter_no)
+        chapter_name = 'BOOK FIRST'
+        passages = self.__passage_repository.get_book_chapter_passages(book_name, chapter_name)
         passage = random.choices(passages, k=1)[0]
 
-        while len(passage.text_english) < 256:
+        while len(passage.text) < 256:
             passage = random.choices(passages, k=1)
         return passage

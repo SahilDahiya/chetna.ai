@@ -7,23 +7,20 @@ from src.domain.models.passages import Passage
 
 class PassageDAO(TypedDict):
     _id: UUID
-    uuid: UUID
+    passage_id: str
     book_name: str
     author: str
-    chapter_title: str
-    chapter_no: str
+    chapter_name: str
     passage_no: str
-    text_english: str
-    text_german: str
+    text: str
 
 
 def passage_dao_to_passage(passage_dao: PassageDAO) -> Passage:
     return Passage(
-        id=passage_dao['uuid'],
+        passage_id=passage_dao['passage_id'],
         book_name=passage_dao['book_name'],
         author=passage_dao['author'],
-        chapter_no=passage_dao['chapter_no'],
+        chapter_name=passage_dao['chapter_name'],
         passage_no=passage_dao['passage_no'],
-        text_english=passage_dao['text_english'],
-        text_german=passage_dao['text_german'],
+        text=passage_dao['text'],
     )

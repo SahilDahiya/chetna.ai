@@ -1,16 +1,15 @@
 from abc import ABC, abstractmethod
-from uuid import UUID
 
-from ...domain.models.passages import Passage
+from src.domain.models.passages import Passage
 
 
 class AbstractPassageRepository(ABC):
     @abstractmethod
-    def get_passage(self, book_name: str, chapter_no: str, passage_no: str) -> Passage:
+    def get_passage(self, book_name: str, chapter_name: str, passage_no: str) -> Passage:
         pass
 
     @abstractmethod
-    def get_book_chapter_passages(self, book_name: str, chapter_no: str) -> list[Passage]:
+    def get_book_chapter_passages(self, book_name: str, chapter_name: str) -> list[Passage]:
         pass
 
     @abstractmethod

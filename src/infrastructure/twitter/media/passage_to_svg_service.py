@@ -7,5 +7,5 @@ class PassageToSvgService:
     ):
         self.__passage_repository = passage_repository
 
-    def convert(self, passage_id: str) -> str:
+    def convert(self, passage_id: str):
         passage = self.__passage_repository.get_passage_by_id(passage_id)

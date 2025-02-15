@@ -27,9 +27,9 @@ def start_discussion():
     discuss.create_discussion(user_id=UUID('123e4567-e89b-12d3-a456-426614174000'))
     console.print(
         Panel(
-            discuss.passage.text_english,
+            discuss.passage.text,
             title=discuss.passage.book_name,
-            subtitle=f'{discuss.passage.chapter_no}#{discuss.passage.passage_no}',
+            subtitle=f'{discuss.passage.chapter_name}#{discuss.passage.passage_no}',
             style='info',
             highlight=True,
         )
