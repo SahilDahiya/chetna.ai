@@ -14,5 +14,5 @@ class AbstractPassageRepository(ABC):
         pass
 
     @abstractmethod
-    def get_passage_by_id(self, passage_id: UUID) -> Passage:
+    def get_passage_by_id(self, passage_id: str) -> Passage:
         pass

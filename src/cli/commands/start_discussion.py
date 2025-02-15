@@ -38,9 +38,9 @@ def start_discussion():
     console.print(Panel('Ask me anything!', title='🤖', style='prompt'))
 
     while True:
-        console.print("─" * console.width, style="dim")
-        console.print("[green]You:[/green]")
-        query = input(" > ").strip()
+        console.print('─' * console.width, style='dim')
+        console.print('[green]You:[/green]')
+        query = input(' > ').strip()
 
         if query.lower() == 'exit':
             console.print('[bold red]Goodbye![/bold red]')

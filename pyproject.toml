@@ -16,6 +16,8 @@ dependencies = [
     "typer>=0.15.1",
     "dependency-injector>=4.45.0",
     "smolagents[litellm]>=1.8.0",
+    "requests-oauthlib>=2.0.0",
+    "anthropic>=0.45.2",
 ]
 
 [tool.uv]

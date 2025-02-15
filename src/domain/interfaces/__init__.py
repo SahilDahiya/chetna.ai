@@ -2,3 +2,6 @@ from .abstract_passage_repository import AbstractPassageRepository
 from .abstract_llm_completion_service import AbstractLlmCompletionService
 from .abstract_passage_recommendation_service import AbstractPassageRecommendationService
 from .abstract_discussion_repository import AbstractDiscussionRepository
+from .abstract_tweet_post_service import AbstractTweetPostService
+from .abstract_passage_to_svg_service import AbstractPassageToSvgService
+from .abstract_llm_repository import AbstractLlmRepository

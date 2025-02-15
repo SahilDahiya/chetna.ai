@@ -2,9 +2,12 @@ from pydantic_settings import BaseSettings
 
 
 class Configuration(BaseSettings):
+    anthropic_api_key: str
+    anthropic_model_name: str
+
     openai_api_key: str
-    model_name: str
-    max_tokens: int
+    openai_model_name: str
+    openai_max_tokens: int
 
     mongodb_connection_string: str
     database_name: str
