@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+    <!-- Background -->
+    <rect width="800" height="600" fill="#1a1a1a"/>
+    
+    <!-- Title -->
+    <text x="40" y="40" fill="#e0e0e0" font-family="Arial, sans-serif" font-size="20" font-weight="bold">
+        The Joyous Wisdom
+    </text>
+    
+    <!-- Chapter Reference -->
+    <text x="40" y="70" fill="#808080" font-family="Arial, sans-serif" font-size="14">
+        BOOK FIRST, Passage 19
+    </text>
+    
+    <!-- Main Text Container -->
+    <foreignObject x="40" y="90" width="720" height="480">
+        <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial, sans-serif; color: #e0e0e0; font-size: 16px; line-height: 1.6;">
+            <!-- Core concept -->
+            <span style="color: #4a9eff">Evil</span>—Test the life of the 
+            <!-- Lists and qualities -->
+            <span style="color: #ff70ff">best and most productive men and nations</span>, 
+            and ask yourselves whether 
+            <!-- Metaphor -->
+            <span style="color: #70ff70">a tree which is to grow proudly heavenward 
+            can dispense with bad weather and tempests</span>: whether 
+            <!-- Lists and qualities -->
+            <span style="color: #ff70ff">disfavour and 
+            opposition from without, whether every kind of hatred, jealousy, 
+            stubbornness, distrust, severity, greed, and violence</span> do not belong to 
+            the <!-- Core concept -->
+            <span style="color: #4a9eff">favouring circumstances</span> without which 
+            <!-- Philosophical statement -->
+            <span style="color: #ff9670">a great growth even in 
+            virtue is hardly possible</span>? 
+            <!-- Key conclusion -->
+            <span style="color: #70ffff">The poison by which the weaker nature is 
+            destroyed is strengthening to the strong individual</span>—and he does not call 
+            it poison.
+        </div>
+    </foreignObject>
+</svg>

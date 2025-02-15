@@ -9,4 +9,4 @@ def passage_query(
     book_name: str,
     passage_repository: AbstractPassageRepository = Provide[Container.passage_repository],
 ):
-    return passage_repository.get_passage(book_name, 'chapter_1', '19')
+    return passage_repository.get_passage(book_name, 'BOOK FIRST', '19')

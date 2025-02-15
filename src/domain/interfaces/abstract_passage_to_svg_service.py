@@ -5,5 +5,5 @@ from src.domain.models.passages import Passage
 
 class AbstractPassageToSvgService(ABC):
     @abstractmethod
-    def get_svg(self, passage: Passage) -> str:
+    def convert(self, passage: Passage) -> str:
         pass

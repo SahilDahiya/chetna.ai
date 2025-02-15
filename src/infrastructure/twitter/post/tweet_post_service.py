@@ -33,7 +33,7 @@ class TweetPostService(AbstractTweetPostService):
         print(f'Uploading image: {passage.passage_id}')
 
         # Get the image file
-        files = {'media': self.__passage_svg_service.get_svg(passage)}
+        files = {'media': self.__passage_svg_service.convert(passage)}
         upload_url = 'https://upload.twitter.com/1.1/media/upload.json'
 
         response = self.__oauth.post(url=upload_url, files=files)

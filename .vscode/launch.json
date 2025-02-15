@@ -15,7 +15,7 @@
             "request": "launch",
             "module": "src.main",
             "args": [
-                "start-discussion"
+                "convert-to-svg", "The Joyous Wisdom"
             ]
         }
     ]
