@@ -5,13 +5,14 @@ from src.domain.models.configuration import Configuration
 from .data import (
     DiscussionRepository,
     PassageRepository,
+    TwitterRepository,
     add_anthropic_client,
     add_mongodb_client,
     add_openai_client,
 )
 from .llm import LlmCompletionService
 from .recommendation import PassageRecommendationService
-from .twitter import PassageToSvgService
+from .twitter import PassageToSvgService, TweetSearchService
 
 
 class Container(containers.DeclarativeContainer):
@@ -34,3 +35,6 @@ class Container(containers.DeclarativeContainer):
     )
 
     passage_to_svg_service = providers.Singleton(PassageToSvgService, anthropic_client=anthropic_client)
+
+    twitter_repository = providers.Singleton(TwitterRepository, mongodb_client=db_client, configuration=config)
+    tweet_search_service = providers.Singleton(TweetSearchService, configuration=config)

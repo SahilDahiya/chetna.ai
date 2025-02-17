@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Count Lines" type="ShConfigurationType">
-    <option name="SCRIPT_TEXT" value="git ls-files | ForEach-Object { Get-Content $_ -ErrorAction SilentlyContinue | Measure-Object -Line } | Measure-Object -Property Lines -Sum | Select-Object -ExpandProperty Sum" />
+    <option name="SCRIPT_TEXT" value="git ls-files src | ForEach-Object { Get-Content $_ -ErrorAction SilentlyContinue | Measure-Object -Line } | Measure-Object -Property Lines -Sum | Select-Object -ExpandProperty Sum" />
     <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
     <option name="SCRIPT_PATH" value="" />
     <option name="SCRIPT_OPTIONS" value="" />

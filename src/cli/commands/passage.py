@@ -10,7 +10,7 @@ app = typer.Typer()
 def get_passage(book_name: str):
     print(passage_query(book_name))
 
+
 @app.command()
 def convert_to_svg(book_name: str):
-    passage = passage_to_svg_query(book_name)
-    passage
+    passage_to_svg_query(book_name)

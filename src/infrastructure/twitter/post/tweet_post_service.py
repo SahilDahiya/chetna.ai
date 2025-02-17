@@ -1,7 +1,6 @@
 from requests_oauthlib import OAuth1Session
 
-from domain.interfaces import AbstractTweetPostService
-from src.domain.interfaces import AbstractPassageToSvgService
+from src.domain.interfaces import AbstractPassageToSvgService, AbstractTweetPostService
 from src.domain.models.configuration import Configuration
 from src.domain.models.passages import Passage
 

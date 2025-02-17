@@ -85,5 +85,4 @@ PASSAGE_TO_SVG_PROMPT = dedent("""\
          <requirement>Ensure proper text wrapping and layout within the SVG</requirement>
       </output_requirements>
    </svg_visualization_prompt>
-    """\
-    )  # noqa: E501
+    """)  # noqa: E501
