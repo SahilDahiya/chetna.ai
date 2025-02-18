@@ -16,11 +16,11 @@ class TwitterRepository(AbstractTwitterRepository):
         return [Tweet(**tweet) for tweet in tweets_cursor]
 
     def save_tweet(self, tweet: Tweet):
-        self.__tweet_collection.insert_one(tweet.dict())
+        self.__tweet_collection.insert_one(tweet.model_dump())
 
     def add_user(self, user: User):
         self.__user_collection.update_one(
             {"user_id": user.user_id},
-            {"$set": user.dict()},
+            {"$set": user.model_dump()},
             upsert=True
         )
