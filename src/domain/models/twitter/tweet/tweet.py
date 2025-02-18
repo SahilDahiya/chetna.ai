@@ -1,4 +1,5 @@
 import datetime
+from uuid import UUID
 
 from pydantic import BaseModel
 
@@ -6,6 +7,7 @@ from .public_metrics import PublicMetrics
 
 
 class Tweet(BaseModel):
+    id: UUID
     user_id: str
     tweet_id: str
     text: str

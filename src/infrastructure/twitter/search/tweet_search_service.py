@@ -10,7 +10,10 @@ class TweetSearchService(AbstractTweetSearchService):
 
     def user_tweets(self, user_id: str):
         search_url = 'https://api.twitter.com/2/tweets/search/recent'
-        query_params = {'query': f'from:{user_id}', 'tweet.fields': 'author_id,created_at,public_metrics,text'}
+        query_params = {
+            'query': f'lang:en from:{user_id} -has:media -is:retweet -is:reply -is:quote is:verified',
+            'tweet.fields': 'author_id,created_at,public_metrics,text',
+        }
 
         def bearer_oauth(r):
             r.headers['Authorization'] = f'Bearer {self.__configuration.twitter_bearer_token}'

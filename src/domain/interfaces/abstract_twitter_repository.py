@@ -9,7 +9,7 @@ class AbstractTwitterRepository(ABC):
         pass
 
     @abstractmethod
-    def add_tweets(self, tweets: list[Tweet]):
+    def save_tweet(self, tweets: list[Tweet]):
         pass
 
     @abstractmethod

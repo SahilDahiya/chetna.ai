@@ -13,5 +13,7 @@ class Configuration(BaseSettings):
     database_name: str
     passage_collection_name: str
     discussion_collection_name: str
+    user_collection_name: str
+    tweet_collection_name: str
 
     twitter_bearer_token: str
