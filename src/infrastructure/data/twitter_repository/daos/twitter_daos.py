@@ -3,8 +3,12 @@ from uuid import UUID
 
 from typing_extensions import TypedDict
 
-from domain.models.twitter import Tweet, User
-from infrastructure.data.twitter_repository.daos import PublicMetricsDAO, public_metrics_to_public_metrics_dao, public_metrics_dao_to_public_metrics
+from src.domain.models.twitter import Tweet, User
+from src.infrastructure.data.twitter_repository.daos import (
+    PublicMetricsDAO,
+    public_metrics_dao_to_public_metrics,
+    public_metrics_to_public_metrics_dao,
+)
 
 
 class UserDAO(TypedDict):
@@ -20,6 +24,7 @@ class TweetDAO(TypedDict):
     text: str
     created_at: datetime.datetime
     public_metrics: PublicMetricsDAO
+    edit_history_tweet_ids: list[str]
 
 
 def tweet_dao_to_tweet(tweet_dao: TweetDAO) -> Tweet:
@@ -29,8 +34,10 @@ def tweet_dao_to_tweet(tweet_dao: TweetDAO) -> Tweet:
         tweet_id=tweet_dao['tweet_id'],
         text=tweet_dao['text'],
         created_at=tweet_dao['created_at'],
-        public_metrics= public_metrics_dao_to_public_metrics(tweet_dao['public_metrics'])
+        public_metrics=public_metrics_dao_to_public_metrics(tweet_dao['public_metrics']),
+        edit_history_tweet_ids=tweet_dao['edit_history_tweet_ids'],
     )
+
 
 def tweet_to_tweet_dao(tweet: Tweet) -> TweetDAO:
     return TweetDAO(
@@ -39,19 +46,14 @@ def tweet_to_tweet_dao(tweet: Tweet) -> TweetDAO:
         tweet_id=tweet.tweet_id,
         text=tweet.text,
         created_at=tweet.created_at,
-        public_metrics=public_metrics_to_public_metrics_dao(tweet.public_metrics)
+        public_metrics=public_metrics_to_public_metrics_dao(tweet.public_metrics),
+        edit_history_tweet_ids=tweet.edit_history_tweet_ids,
     )
+
 
 def user_dao_to_user(user_dao: UserDAO) -> User:
-    return User(
-        id=user_Dao['_id'],
-        user_id=user_dao['user_id'],
-        user_name=user_dao['user_name']
-    )
+    return User(user_id=user_dao['user_id'], user_name=user_dao['user_name'])
+
 
 def user_to_user_dao(user: User) -> UserDAO:
-    return UserDAO(
-        _id=user.id,
-        user_id=user.user_id,
-        user_name=user.user_name
-    )
+    return UserDAO(user_id=user.user_id, user_name=user.user_name)

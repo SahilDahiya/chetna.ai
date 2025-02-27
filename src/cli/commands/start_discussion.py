@@ -1,5 +1,3 @@
-from uuid import UUID
-
 import typer
 from rich.console import Console
 from rich.panel import Panel
@@ -24,7 +22,7 @@ app = typer.Typer()
 @app.command()
 def start_discussion():
     discuss = DiscussCommand()
-    discuss.create_discussion(user_id=UUID('123e4567-e89b-12d3-a456-426614174000'))
+    discuss.create_discussion(user_id='tester')
     console.print(
         Panel(
             discuss.passage.text,

@@ -15,7 +15,7 @@
             "request": "launch",
             "module": "src.main",
             "args": [
-                "convert-to-svg", "The Joyous Wisdom"
+                "add-user", "DylanoA4"
             ]
         }
     ]

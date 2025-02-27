@@ -13,3 +13,4 @@ class Tweet(BaseModel):
     text: str
     created_at: datetime.datetime
     public_metrics: PublicMetrics
+    edit_history_tweet_ids: list[str]

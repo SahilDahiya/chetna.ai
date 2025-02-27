@@ -1,6 +1,6 @@
 from typing_extensions import TypedDict
 
-from domain.models.twitter.tweet import PublicMetrics
+from src.domain.models.twitter.tweet import PublicMetrics
 
 
 class PublicMetricsDAO(TypedDict):
@@ -19,8 +19,9 @@ def public_metrics_dao_to_public_metrics(public_metric_dao: PublicMetricsDAO) ->
         like_count=public_metric_dao['like_count'],
         quote_count=public_metric_dao['quote_count'],
         impression_count=public_metric_dao['impression_count'],
-        bookmark_count=public_metric_dao['bookmark_count']
+        bookmark_count=public_metric_dao['bookmark_count'],
     )
+
 
 def public_metrics_to_public_metrics_dao(public_metrics: PublicMetrics) -> PublicMetricsDAO:
     return PublicMetricsDAO(
@@ -29,5 +30,5 @@ def public_metrics_to_public_metrics_dao(public_metrics: PublicMetrics) -> Publi
         like_count=public_metrics.like_count,
         quote_count=public_metrics.quote_count,
         impression_count=public_metrics.impression_count,
-        bookmark_count=public_metrics.bookmark_count
+        bookmark_count=public_metrics.bookmark_count,
     )

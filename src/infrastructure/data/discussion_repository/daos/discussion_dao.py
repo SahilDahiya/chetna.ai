@@ -1,6 +1,5 @@
 import datetime
 from typing import TypedDict
-from uuid import UUID
 
 from src.domain.models.discussion import Discussion
 
@@ -12,7 +11,7 @@ from .discussion_message_dao import (
 
 
 class DiscussionDAO(TypedDict):
-    user_id: UUID
+    user_id: str
     passage_id: str
     created_at: datetime.datetime
     updated_at: datetime.datetime

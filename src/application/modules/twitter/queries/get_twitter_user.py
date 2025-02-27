@@ -16,10 +16,9 @@ def get_twitter_user(
 ):
     response = tweet_search_service.user_tweets(user_id)
     user = User(
-            id=uuid4(),
-            user_id=response['data'][0]['author_id'],
-            user_name=user_id,
-        )
+        user_id=response['data'][0]['author_id'],
+        user_name=user_id,
+    )
     twitter_repository.add_user(user)
     for tweet_data in response['data']:
         public_metrics = tweet_data['public_metrics']
@@ -36,6 +35,7 @@ def get_twitter_user(
                 quote_count=public_metrics['quote_count'],
                 impression_count=public_metrics['impression_count'],
                 bookmark_count=public_metrics['bookmark_count'],
-            )
+            ),
+            edit_history_tweet_ids=tweet_data['edit_history_tweet_ids'],
         )
         twitter_repository.save_tweet(tweet)
