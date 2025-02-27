@@ -12,5 +12,5 @@ def get_passage(book_name: str):
 
 
 @app.command()
-def convert_to_svg(book_name: str):
-    passage_to_svg_query(book_name)
+def convert_to_svg(book_name: str, passage_no:str):
+    passage_to_svg_query(book_name, passage_no)
