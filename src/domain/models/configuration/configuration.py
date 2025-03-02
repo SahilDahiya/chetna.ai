@@ -17,3 +17,4 @@ class Configuration(BaseSettings):
     tweet_collection_name: str
 
     twitter_bearer_token: str
+    twitter_main_user: str

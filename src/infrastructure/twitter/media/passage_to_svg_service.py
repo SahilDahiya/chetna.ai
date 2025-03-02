@@ -33,9 +33,9 @@ class PassageToSvgService(AbstractPassageToSvgService):
                 'role': 'user',
                 'content': PASSAGE_TO_SVG_PROMPT.format(
                     passage=passage.text,
-                    chapter_name=passage.chapter_name or '',  # Handle None values
-                    passage_no=passage.passage_no or '',
-                    book_name=passage.book_name or '',
+                    chapter_name=passage.chapter_name,
+                    passage_no=passage.passage_no,
+                    book_name=passage.book_name,
                 ),
             }
         ]
@@ -54,7 +54,7 @@ class PassageToSvgService(AbstractPassageToSvgService):
 
         try:
             response = self.__anthropic_client.messages.create(
-                model='claude-3-5-sonnet-20241022',
+                model='claude-3-7-sonnet-latest',
                 system='You are a tool that converts text passages into SVG code with semantic highlighting. You only output valid SVG code.',  # noqa: E501
                 messages=messages,
                 tools=tools,

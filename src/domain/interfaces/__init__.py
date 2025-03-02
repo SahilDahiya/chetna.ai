@@ -7,3 +7,4 @@ from .abstract_passage_to_svg_service import AbstractPassageToSvgService
 from .abstract_tweet_post_service import AbstractTweetPostService
 from .abstract_twitter_repository import AbstractTwitterRepository
 from .abstract_tweet_search_service import AbstractTweetSearchService
+from .abstract_collect_tweet_to_reply import AbstractCollectTweetToReply

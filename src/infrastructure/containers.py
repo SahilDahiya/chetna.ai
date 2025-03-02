@@ -12,7 +12,7 @@ from .data import (
 )
 from .llm import LlmCompletionService
 from .recommendation import PassageRecommendationService
-from .twitter import PassageToSvgService, TweetSearchService
+from .twitter import CollectTweetToReplyService, PassageToSvgService, TweetSearchService
 
 
 class Container(containers.DeclarativeContainer):
@@ -38,3 +38,7 @@ class Container(containers.DeclarativeContainer):
 
     twitter_repository = providers.Singleton(TwitterRepository, mongodb_client=db_client, configuration=config)
     tweet_search_service = providers.Singleton(TweetSearchService, configuration=config)
+
+    collect_tweet_to_reply_service = providers.Singleton(
+        CollectTweetToReplyService, configuration=config
+    )
